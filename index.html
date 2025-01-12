@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Python vs C#</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/animation.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<script type="text/javascript" src="js/page.js"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<!-- - - - - - - Slide - - - - - - -->
+					<div class="caption" style="font-size: large">Fear and loathing in</div>
+                    <div class="caption">Advent of Code 2024</div>
+				</section>
+
+                <section>
+                    <!-- - - - - - - Slide - - - - - - -->
+					<h3>Variables</h3>
+					<pre><code data-trim data-noescape class="language-csharp">
+x00: 1
+x01: 0
+x02: 1
+x03: 1
+x04: 0
+y00: 1
+y01: 1
+...
+    </code></pre>
+                </section>
+
+                <section>
+                    <!-- - - - - - - Slide - - - - - - -->
+					<h3>Functions</h3>
+					<pre><code data-trim data-noescape class="language-csharp">
+tnw OR fst -> frj
+gnj AND tgd -> z11
+bfw XOR mjb -> z00
+x03 OR x00 -> vdt
+gnj AND wpb -> z02
+x04 AND y00 -> kjc
+...
+    </code></pre>
+                </section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+					<h3><a href="https://adventofcode.com/2024/day/24">Task - Part 1 🔗</a></h3>
+                    <pre><code data-trim data-noescape class="language-csharp">
+z1 = ?
+z2 = ?
+z3 = ?
+...
+    </code></pre>
+
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h4>Compute step by step</h4>
+					<ol>
+                        <li><pre>tjw = x00 AND y01; gkb = x00 XOR y01</pre></li>
+                        <li><pre>acb = tjw AND gkb; ...</pre></li>
+                        <li><pre>z01 = acb AND xkt</pre> </li>
+                        <li>... 85 more steps</li>
+                    </ol>
+				</section>
+
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h3>Result</h3>
+                    <div>1101000001011001011111011001000100001001110000 = 57270694330992</div>
+
+                    <img src="img/z_vector.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <div class="caption">Part 2</div>
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <div>
+                        Swap variables ...
+                    </div>
+                    <img src="img/func_swap.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <div>
+                        ... four times <br/>
+                        to make
+                    </div>
+                    <img src="img/xyz.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <img src="img/adder.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h3>Detailed view</h3>
+                    <img src="img/adder_inside.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <img src="img/functions.jpg" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <img src="img/bin_adder_inside.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <img src="img/bin_adders_combined.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h4>MathPlotLib</h4>
+                    <img src="img/mathplotlib.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h4>more MathPlotLib</h4>
+                    <img src="img/mathplotlib2.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <h4>My visualization</h4>
+                    <img src="img/custom_viz.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+                    <img src="img/beautiful_mind.png" />
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+					<div>
+						<img class="icon-img" src="img/python_logo.png" />
+                        <a href="https://github.com/AndreyCorelli/aoc2024/blob/main/day24/solution_part_2_2.py">an ad-hoc script 🔗</a>
+					</div>
+					<pre><code data-trim data-noescape class="language-python">
+def check_digit(i: int, carry_sign_name: Optional[str]) -> str:
+    z_name = f"z{i:02d}"
+    z_oper = [op for op in circuit.operations if op.out_code == z_name][0]
+    print(f"Checking z[{i:02d}] ({z_oper}) = f(c[{i:02d}]={carry_sign_name}, x[{i:02d}], y[{i:02d}])")
+
+    # from the very beginning we'll check the next operation
+    # one of the candidates should be the (XOR) input for the next digit
+    next_z = f"z{(i + 1):02d}"
+    next_z_op: Optional[Operation] = None
+    for op in circuit.operations:
+        if op.out_code == next_z:
+            next_z_op = op
+            break
+    if next_z_op.operation_code != "XOR":
+        raise Exception(f"Anomaly while searching a candidate for {next_z}: {next_z_op}-s 'c': wrong operation")
+    print(f"... {next_z}: {next_z_op}")
+
+    </code></pre>
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+					<div>
+						<img class="icon-img" src="img/python_logo.png" /> ... output
+					</div>
+					<pre><code data-trim data-noescape class="language-python">
+Anomaly while searching a candidate for
+z39: x39 AND y39 -> z39-s 'c': wrong operation
+
+(x40 XOR y40) XOR nhk -> z40
+C[38] = (jct OR hvf) -> nhk
+    </code></pre>
+				</section>
+
+                <section>
+					<!-- - - - - - - Slide - - - - - - -->
+					<div>
+						Solution!
+					</div>
+					<pre><code data-trim data-noescape class="language-python">
+mnm XOR gqb -> gwh
+dsk OR ptc -> z09
+
+y13 AND x13 -> wbw
+y13 XOR x13 -> wgb
+
+kgk AND sbs -> z21
+kgk XOR sbs -> rcb
+
+x39 AND y39 -> z39
+wjf XOR ksf -> jct
+    </code></pre>
+				</section>
+
+
+				<!-- - - - - - - Slide - - - - - - -->
+				<section data-background-image="img/fin.png" data-background-size="contain" data-background-repeat="no-repeat"></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+			setupPage();
+		</script>
+	</body>
+</html>
