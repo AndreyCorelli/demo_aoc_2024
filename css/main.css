@@ -125,3 +125,23 @@ img.small-pic {
     height: 50px;
     vertical-align: middle;
 }
+
+.heart-list {
+    list-style: none !important; /* Force removal of default numbering */
+    padding-left: 20px; /* Add space for custom bullets */
+}
+
+.heart-list li {
+    position: relative;
+    padding-left: 60px; /* Space for the bullet */
+}
+
+.heart-list li::before {
+    content: '❤️'; /* Unicode character */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em; /* Adjust size if necessary */
+    color: red; /* Optional: Set the bullet color */
+}
